@@ -1,0 +1,54 @@
+server:
+  port: 7072
+spring:
+  application:
+    name: product-service
+  cloud:
+    # nacos服务治理
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: ${spring.profiles.active}
+    # sentinel服务治理
+    sentinel:
+      eager: true
+      transport:
+        port: 8719
+        dashboard: localhost:7070
+  datasource:
+    name: dataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      max-active: 100
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+      # filter
+      filters: stat,wall,slf4j,config
+      webStatFilter:
+        enabled: true
+        urlPattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      statViewServlet: #访问监控网页的登录用户名和密码
+        enabled: true
+        urlPattern: /druid/*
+        # allow: 127.0.0.1
+        login-username: druid
+        login-password: druid
+
+mybatis:
+  typeAliasesPackage: com.xiangyj.cloud.dubbo.product.service.dao.entity
+  mapperLocations: classpath:mappers/*.xml
+logging:
+  level:
+    root: debug
