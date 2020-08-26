@@ -1,15 +1,16 @@
 spring:
   application:
-    name: product-service
+    name: order-service
   cloud:
     nacos:
       config:
         server-addr: localhost:8848
         file-extension: yaml
-        prefix: product
+        prefix: order
         namespace: ${spring.profiles.active}
 
 logging:
   level:
+    # 心跳
     com.alibaba.nacos.client.naming: WARN
     sun.net.www.protocol.http.HttpURLConnection: WARN

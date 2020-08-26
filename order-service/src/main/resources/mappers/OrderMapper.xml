@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiangyj.cloud.dubbo.order.service.dao.mapper.OrderMapper">
+	<resultMap id="BaseResultMap" type="com.xiangyj.cloud.dubbo.order.service.dao.entity.Order">
+		<result column="SYS_ID" property="sysId" jdbcType="INTEGER" />
+		<result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+		<result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SYS_ID, ORDER_ID, PRODUCT_ID
+	</sql>
+	
+	<select id="findById" resultMap="BaseResultMap"	parameterType="com.xiangyj.cloud.dubbo.order.service.dao.entity.Order">
+		SELECT
+			<include refid="Base_Column_List"/>
+		FROM
+			`order`
+		WHERE
+			1=1
+		<if test="orderId != null">
+			AND ORDER_ID = #{orderId}
+		</if>
+	</select>
+	
+</mapper>

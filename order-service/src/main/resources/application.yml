@@ -1,10 +1,10 @@
 server:
-  port: 7072
+  port: 7073
 spring:
-  application:
-    name: product-service
   profiles:
     include: dubbo
+  application:
+    name: order-service
   cloud:
     # nacos服务治理
     nacos:
@@ -49,7 +49,7 @@ spring:
         login-password: druid
 
 mybatis:
-  typeAliasesPackage: com.xiangyj.cloud.dubbo.product.service.dao.entity
+  typeAliasesPackage: com.xiangyj.cloud.dubbo.order.service.dao.entity
   mapperLocations: classpath:mappers/*.xml
 logging:
   level:
