@@ -1,0 +1,2 @@
+dubbo.apm.consumer=com.xiangyj.cloud.dubbo.apmtrace.filter.ConsumerApmFilter
+dubbo.apm.provider=com.xiangyj.cloud.dubbo.apmtrace.filter.ProviderApmFilter
