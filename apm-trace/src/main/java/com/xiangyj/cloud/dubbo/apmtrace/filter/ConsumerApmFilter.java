@@ -7,6 +7,7 @@ import org.apache.dubbo.common.extension.Activate;
 import org.apache.dubbo.rpc.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 /**
  * consumer端filter，由consumer端生成traceId，由于elastic APM暂时不支持Dubbo，
@@ -21,10 +22,11 @@ public class ConsumerApmFilter implements Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         // 获取当前thread中的APM transaction
-        Transaction transaction = ElasticApm.currentTransaction();
-        if (transaction.getId().isEmpty()) {
-            transaction = ElasticApm.startTransaction();
-        }
+//        Transaction transaction = ElasticApm.currentTransaction();
+//        if (transaction.getId().isEmpty()) {
+//            transaction = ElasticApm.startTransaction();
+//        }
+        final Transaction transaction = ElasticApm.startTransactionWithRemoteParent(MDC::get);
         try (final Scope ignored = transaction.activate()) {
             String name = "consumer:" + invocation.getInvoker().getInterface().getName() + "#" + invocation.getMethodName();
             transaction.startSpan("Dubbo", "consumer", "Rpc Invoke");
