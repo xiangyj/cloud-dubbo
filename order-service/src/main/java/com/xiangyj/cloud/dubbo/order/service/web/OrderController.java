@@ -38,8 +38,6 @@ public class OrderController {
         } catch (Exception e) {
             transaction.captureException(e);
             throw e;
-        } finally {
-            transaction.end();
         }
         LOGGER.info("MDC:{}", MDC.getCopyOfContextMap());
         Order order = orderMapper.findById(orderId);
