@@ -9,6 +9,9 @@
         <module>../order-service</module>
         <module>../product-api</module>
         <module>../product-service</module>
+        <module>../zipkin-order</module>
+        <module>../zipkin-product</module>
+        <module>../zipkin-filter</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -39,7 +42,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.2.1.RELEASE</version>
+                <version>2.2.3.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

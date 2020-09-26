@@ -1,0 +1,2 @@
+dubbo.zipkin.consumer=com.xiangyj.cloud.dubbo.zipkin.filter.ConsumerZipkinFilter
+dubbo.zipkin.provider=com.xiangyj.cloud.dubbo.zipkin.filter.ProviderZipkinFilter
