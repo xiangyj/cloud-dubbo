@@ -12,6 +12,9 @@ dubbo:
   # 设置超时时间
   consumer:
     timeout: 6000
+  protocol:
+    name: dubbo
+    port: 20881
 spring:
   main:
     # 解决Bean重复定义问题

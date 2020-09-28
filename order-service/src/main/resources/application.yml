@@ -20,6 +20,9 @@ spring:
   datasource:
     name: dataSource
     type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/order?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&useSSL=false
+    username: root
+    password: root
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       max-active: 100
@@ -51,6 +54,3 @@ spring:
 mybatis:
   typeAliasesPackage: com.xiangyj.cloud.dubbo.order.service.dao.entity
   mapperLocations: classpath:mappers/*.xml
-logging:
-  level:
-    root: debug
