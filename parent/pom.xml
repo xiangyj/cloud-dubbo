@@ -12,6 +12,8 @@
         <module>../zipkin-order</module>
         <module>../zipkin-product</module>
         <module>../zipkin-filter</module>
+        <module>../sw-order</module>
+        <module>../sw-product</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
